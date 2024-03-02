@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/data/questions.dart';
 import 'package:quizapp/questions_summary.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ResultsScreen extends StatelessWidget {
   const ResultsScreen({
@@ -27,7 +28,9 @@ class ResultsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final numberTotalQuestions = questions.length;
-    final numberOfCorrectQuestions = summaryData.where((data) => data['user_answer'] == data['correct_answer']).length;
+    final numberOfCorrectQuestions = summaryData
+        .where((data) => data['user_answer'] == data['correct_answer'])
+        .length;
 
     return SizedBox(
       width: double.infinity,
@@ -36,7 +39,14 @@ class ResultsScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('You answered $numberOfCorrectQuestions out of $numberTotalQuestions answers correctly!'),
+            Text(
+              'You answered $numberOfCorrectQuestions out of $numberTotalQuestions answers correctly!',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.lato(
+                color: const Color.fromARGB(255, 213, 151, 227),
+                fontSize: 24,
+              ),
+            ),
             const SizedBox(
               height: 30,
             ),
@@ -46,7 +56,15 @@ class ResultsScreen extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            TextButton(onPressed: () {}, child: const Text('Restart Quiz!'))
+            TextButton(
+                onPressed: () {},
+                child: Text(
+                  'Restart Quiz!',
+                  style: GoogleFonts.roboto(
+                    color: const Color.fromARGB(255, 239, 94, 84),
+                    fontSize: 24
+                  ),
+                ))
           ],
         ),
       ),
